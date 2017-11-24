@@ -44,6 +44,7 @@ class Weixinpay {
         $sign=$this->makeSign($data);
         $data['sign']=$sign;
         $xml=$this->toXml($data);
+        return $xml;
         $url = 'https://api.mch.weixin.qq.com/pay/unifiedorder';//接收xml数据的文件
         $header[] = "Content-type: text/xml";//定义content-type为xml,注意是数组
         $ch = curl_init ($url);
@@ -132,6 +133,7 @@ class Weixinpay {
         ksort($data);
         $string_a=http_build_query($data);
         $string_a=urldecode($string_a);
+
         //签名步骤二：在string后加入KEY
         $config=$this->config;
         $string_sign_temp=$string_a."&key=".$config['KEY'];
