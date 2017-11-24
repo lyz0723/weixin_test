@@ -37,9 +37,10 @@ class Weixinpay {
             'spbill_create_ip'=>$_SERVER['REMOTE_ADDR'],
             'notify_url'=>$weixinpay_config['NOTIFY_URL']
             );
+        return $order;
         // 合并配置数据和订单数据
         $data=array_merge($order,$config);
-        return $data;
+
         // 生成签名
         $sign=$this->makeSign($data);
         $data['sign']=$sign;
