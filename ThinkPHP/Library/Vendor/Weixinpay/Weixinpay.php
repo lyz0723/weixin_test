@@ -39,7 +39,7 @@ class Weixinpay {
             );
         // 合并配置数据和订单数据
         $data=array_merge($order,$config);
-
+return $data;
         // 生成签名
         $sign=$this->makeSign($data);
         $data['sign']=$sign;
