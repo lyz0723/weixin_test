@@ -167,7 +167,6 @@ class Weixinpay {
             $redirect_uri=U('Index/index','','',true);
             $redirect_uri=urlencode($redirect_uri);
             $url='https://open.weixin.qq.com/connect/oauth2/authorize?appid='.$config['APPID'].'&redirect_uri='.$redirect_uri.'&response_type=code&scope=snsapi_base&state='.$out_trade_no.'#wechat_redirect';
-            echo $url;die;
             redirect($url);
         }else{
             // 如果有code参数；则表示获取到openid

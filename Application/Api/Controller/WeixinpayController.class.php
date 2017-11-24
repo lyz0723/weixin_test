@@ -26,7 +26,7 @@ class WeixinpayController extends Controller{
      * 中的weixinpay_js方法
      */
     public function pay(){
-        echo 444;die;
+
         // 导入微信支付sdk
         Vendor('Weixinpay.Weixinpay');
         $wxpay=new \Weixinpay();
