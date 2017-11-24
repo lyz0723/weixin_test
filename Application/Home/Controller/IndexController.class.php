@@ -12,7 +12,7 @@ class IndexController extends Controller {
         $assign=array(
             'data'=>json_encode($data)
         );
-
+print_r($assign);
         $this->assign($assign);
         $this->display();
 
