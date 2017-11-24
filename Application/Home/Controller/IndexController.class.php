@@ -3,6 +3,7 @@ namespace Home\Controller;
 use Think\Controller;
 class IndexController extends Controller {
     public function index(){
+        echo 44;die;
         Vendor('Weixinpay.Weixinpay');
         $wxpay=new \Weixinpay();
         // 获取jssdk需要用到的数据
