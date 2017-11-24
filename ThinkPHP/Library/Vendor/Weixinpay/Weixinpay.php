@@ -10,8 +10,8 @@ class Weixinpay {
     // 定义配置项
     private $config=array(
         'APPID'              => 'wx4ff19b6511cb0168', // 微信支付APPID
-        'MCHID'              => '', // 微信支付MCHID 商户收款账号
-        'KEY'                => '', // 微信支付KEY
+        'MCHID'              => '1486263132', // 微信支付MCHID 商户收款账号
+        'KEY'                => '132f0ea0c9e643429827b5deb9dd7449', // 微信支付KEY
         'APPSECRET'          => 'ef0cc74d77ceb137e297efecfc0e9908',  //公众帐号secert
         'NOTIFY_URL'         => 'http://baijunyao.com/Api/WeixPay/notify/order_number/', // 接收支付状态的连接  改成自己的域名
         );
