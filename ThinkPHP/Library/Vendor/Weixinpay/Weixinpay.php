@@ -55,12 +55,13 @@ class Weixinpay {
         curl_setopt($ch, CURLOPT_POST, 1);
         curl_setopt($ch, CURLOPT_POSTFIELDS, $xml);
         $response = curl_exec($ch);
-return $response;
+
         if(curl_errno($ch)){
             // 显示报错信息；终止继续执行
             die(curl_error($ch));
         }
         curl_close($ch);
+        return $response;
         $result=$this->toArray($response);
         return $result;
         // 显示错误信息
