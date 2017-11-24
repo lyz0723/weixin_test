@@ -37,7 +37,6 @@ class Weixinpay {
             'spbill_create_ip'=>$_SERVER['REMOTE_ADDR'],
             'notify_url'=>$weixinpay_config['NOTIFY_URL']
             );
-        return $order;
         // 合并配置数据和订单数据
         $data=array_merge($order,$config);
 
@@ -194,6 +193,7 @@ class Weixinpay {
 
             // 统一下单 获取prepay_id
             $unified_order=$this->unifiedOrder($order);
+            return $unified_order;
             // 获取当前时间戳
             $time=time();
             // 组合jssdk需要用到的数据
