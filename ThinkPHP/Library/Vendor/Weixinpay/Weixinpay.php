@@ -42,6 +42,7 @@ class Weixinpay {
 
         // 生成签名
         $sign=$this->makeSign($data);
+        return $sign;
         $data['sign']=$sign;
         $xml=$this->toXml($data);
         $url = 'https://api.mch.weixin.qq.com/pay/unifiedorder';//接收xml数据的文件
@@ -193,7 +194,7 @@ class Weixinpay {
 
             // 统一下单 获取prepay_id
             $unified_order=$this->unifiedOrder($order);
-
+return $unified_order;
             // 获取当前时间戳
             $time=time();
             // 组合jssdk需要用到的数据
