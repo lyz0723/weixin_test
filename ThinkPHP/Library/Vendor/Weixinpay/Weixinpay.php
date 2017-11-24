@@ -42,7 +42,6 @@ class Weixinpay {
 
         // 生成签名
         $sign=$this->makeSign($data);
-        return $sign;
         $data['sign']=$sign;
         $xml=$this->toXml($data);
         $url = 'https://api.mch.weixin.qq.com/pay/unifiedorder';//接收xml数据的文件
@@ -61,6 +60,7 @@ class Weixinpay {
         }
         curl_close($ch);
         $result=$this->toArray($response);
+        return $result;
         // 显示错误信息
         if ($result['return_code']=='FAIL') {
             die($result['return_msg']);
