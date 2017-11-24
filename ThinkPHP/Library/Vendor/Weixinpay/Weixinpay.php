@@ -169,7 +169,7 @@ class Weixinpay {
             $url='https://open.weixin.qq.com/connect/oauth2/authorize?appid='.$config['APPID'].'&redirect_uri='.$redirect_uri.'&response_type=code&scope=snsapi_base&state='.$out_trade_no.'#wechat_redirect';
             redirect($url);
         }else{
-
+echo 44;
             // 如果有code参数；则表示获取到openid
             $code=I('get.code');
             // 取出订单号
