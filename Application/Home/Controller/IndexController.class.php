@@ -20,7 +20,7 @@ class IndexController extends Controller {
         $redirect_uri=U('Index/auth','','',true);
         $redirect_uri=urlencode($redirect_uri);
         $url='https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx4ff19b6511cb0168&redirect_uri='.$redirect_uri.'&response_type=code&scope=snsapi_userinfo&state=STATE#wechat_redirect';
-        header($url);
+        redirect($url);
     }
 
     public function auth(){
