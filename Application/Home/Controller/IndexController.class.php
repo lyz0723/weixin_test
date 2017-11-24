@@ -3,6 +3,7 @@ namespace Home\Controller;
 use Think\Controller;
 class IndexController extends Controller {
     public function index(){
+        echo 444;die;
         /*//获取用户openid
         Vendor('Weixinpay.Weixinpay');
         $wxpay=new \Weixinpay();
