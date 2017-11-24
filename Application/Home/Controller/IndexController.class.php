@@ -18,6 +18,7 @@ class IndexController extends Controller {
         $redirect_uri='https://liyanzhao.feisir.com/weixin_test/';
         $redirect_uri=urlencode($redirect_uri);
         $url='https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx4ff19b6511cb0168&redirect_uri='.$redirect_uri.'&response_type=code&scope=snsapi_userinfo&state=STATE#wechat_redirect';
+        echo $url;die;
         // curl获取prepay_id
         $result=$this->curl_get_contents($url);
         //print_r($result);
