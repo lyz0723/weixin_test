@@ -189,7 +189,7 @@ class Weixinpay {
                 'trade_type'=>'JSAPI',// JSAPI公众号支付
                 'openid'=>$openid// 获取到的openid
             );
-        return $order;
+
             // 统一下单 获取prepay_id
             $unified_order=$this->unifiedOrder($order);
             // 获取当前时间戳
