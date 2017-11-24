@@ -35,8 +35,9 @@ class WeixinpayController extends Controller{
         $assign=array(
             'data'=>json_encode($data)
             );
-        $this->assign($assign);
-        $this->display();
+        print_r($assign);
+        /*$this->assign($assign);
+        $this->display();*/
     }
 
 }
