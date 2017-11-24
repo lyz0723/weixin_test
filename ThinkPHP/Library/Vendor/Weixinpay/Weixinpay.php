@@ -47,6 +47,7 @@ class Weixinpay {
         $url = 'https://api.mch.weixin.qq.com/pay/unifiedorder';//接收xml数据的文件
         $header[] = "Content-type: text/xml";//定义content-type为xml,注意是数组
         $ch = curl_init ($url);
+        return $ch;
         curl_setopt($ch, CURLOPT_URL, $url);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
         curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false); // 兼容本地没有指定curl.cainfo路径的错误
