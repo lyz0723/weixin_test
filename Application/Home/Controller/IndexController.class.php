@@ -8,7 +8,7 @@ class IndexController extends Controller {
         $wxpay=new \Weixinpay();
         // 获取jssdk需要用到的数据
         $data=$wxpay->getParameters();
-        print_r($data);
+
         // 将数据分配到前台页面
         $assign=array(
             'data'=>json_encode($data)

@@ -39,7 +39,7 @@ class Weixinpay {
             );
         // 合并配置数据和订单数据
         $data=array_merge($order,$config);
-return $data;
+
         // 生成签名
         $sign=$this->makeSign($data);
         $data['sign']=$sign;
@@ -193,7 +193,7 @@ return $data;
 
             // 统一下单 获取prepay_id
             $unified_order=$this->unifiedOrder($order);
-            return $unified_order;
+
             // 获取当前时间戳
             $time=time();
             // 组合jssdk需要用到的数据
