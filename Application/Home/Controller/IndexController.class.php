@@ -24,6 +24,7 @@ class IndexController extends Controller {
     }
 
     public function auth(){
+        echo 55;die;
         $code=I('get.code');
         echo $code;die;
         $out_trade_no=I('get.state',0,'intval');
