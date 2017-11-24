@@ -20,7 +20,7 @@ class IndexController extends Controller {
         $url='https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx4ff19b6511cb0168&redirect_uri='.$redirect_uri.'&response_type=code&scope=snsapi_userinfo&state=STATE#wechat_redirect';
         // curl获取prepay_id
         $result=$this->curl_get_contents($url);
-        print_r($result);
+        //print_r($result);
     }
     /**
      * curl 请求http
