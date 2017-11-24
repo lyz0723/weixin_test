@@ -25,6 +25,7 @@ class IndexController extends Controller {
 
     public function auth(){
         $code=I('get.code');
+        echo $code;die;
         $out_trade_no=I('get.state',0,'intval');
         // 组合获取prepay_id的url
         $url='https://api.weixin.qq.com/sns/oauth2/access_token?appid=wx4ff19b6511cb0168&secret=ef0cc74d77ceb137e297efecfc0e9908&code='.$code.'&grant_type=authorization_code';
