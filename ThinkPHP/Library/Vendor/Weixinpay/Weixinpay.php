@@ -13,7 +13,7 @@ class Weixinpay {
         'MCHID'              => '1486263132', // 微信支付MCHID 商户收款账号
         'KEY'                => '132f0ea0c9e643429827b5deb9dd7449', // 微信支付KEY
         'APPSECRET'          => 'ef0cc74d77ceb137e297efecfc0e9908',  //公众帐号secert
-        'NOTIFY_URL'         => 'http://baijunyao.com/Api/WeixPay/notify/order_number/', // 接收支付状态的连接  改成自己的域名
+        'NOTIFY_URL'         => 'https://liyanzhao.feisir.com/Api/WeixPay/notify/order_number/', // 接收支付状态的连接  改成自己的域名
         );
 
     // 构造函数
@@ -34,7 +34,7 @@ class Weixinpay {
             'appid'=>$weixinpay_config['APPID'],
             'mch_id'=>$weixinpay_config['MCHID'],
             'nonce_str'=>'test',
-            'spbill_create_ip'=>'192.168.0.1',
+            'spbill_create_ip'=>$_SERVER['REMOTE_ADDR'],
             'notify_url'=>$weixinpay_config['NOTIFY_URL']
             );
         // 合并配置数据和订单数据
@@ -189,7 +189,7 @@ class Weixinpay {
                 'trade_type'=>'JSAPI',// JSAPI公众号支付
                 'openid'=>$openid// 获取到的openid
             );
-            return 7777;
+
             // 统一下单 获取prepay_id
             $unified_order=$this->unifiedOrder($order);
             return $unified_order;
