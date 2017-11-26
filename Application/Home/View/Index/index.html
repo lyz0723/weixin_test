@@ -8,9 +8,9 @@
         //调用微信JS api 支付
         function jsApiCall()
         {
+            var data={$data};
             WeixinJSBridge.invoke(
-                    'getBrandWCPayRequest',
-                    {$data},
+                    'getBrandWCPayRequest', data,
             function(res){
                 WeixinJSBridge.log(res.err_msg);
                 alert(res.err_code+res.err_desc+res.err_msg);
