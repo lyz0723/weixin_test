@@ -21,13 +21,16 @@
         function callpay()
         {
             if (typeof WeixinJSBridge == "undefined"){
+                alert(111)
                 if( document.addEventListener ){
                     document.addEventListener('WeixinJSBridgeReady', jsApiCall, false);
                 }else if (document.attachEvent){
+                    alert(333)
                     document.attachEvent('WeixinJSBridgeReady', jsApiCall);
                     document.attachEvent('onWeixinJSBridgeReady', jsApiCall);
                 }
             }else{
+                alert(22)
                 jsApiCall();
             }
         }
@@ -67,7 +70,7 @@
     </script>-->
 </head>
 <body>
-{$data}
+
 <br/>
 <font color="#9ACD32"><b>该笔订单支付金额为<span style="color:#f00;font-size:50px">1分</span>钱</b></font><br/><br/>
 <div align="center">
