@@ -6,13 +6,13 @@ class IndexController extends Controller {
         //获取用户openid
         Vendor('Weixinpay.Weixinpay');
         Vendor('Sample.jssdk');
-        $jssdk = new \JSSDK("wx4ff19b6511cb0168", "ef0cc74d77ceb137e297efecfc0e9908");
-        $signPackage = $jssdk->GetSignPackage();
         $wxpay=new \Weixinpay();
         // 获取jssdk需要用到的数据
         $data=$wxpay->getParameters();
         //print_r($data);
         // 将数据分配到前台页面
+        $jssdk = new \JSSDK("wx4ff19b6511cb0168", "ef0cc74d77ceb137e297efecfc0e9908");
+        $signPackage = $jssdk->GetSignPackage();
         $assign=array(
             'data'=>json_encode($data),
             'singPackage'=>$signPackage
