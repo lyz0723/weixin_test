@@ -76,7 +76,7 @@ class Weixinpay {
             die($result['return_msg']);
         }
         $result['sign']=$sign;
-        $result['nonce_str']='test';
+        $result['nonce_str']=$this->createNonceStr();
         return $result;
     }
 
@@ -218,7 +218,7 @@ class Weixinpay {
                 'signType'=>'MD5'//加密方式
             );
             // 生成签名
-            $data['signature']=$this->makeSign($data);
+            $data['paySign']=$this->makeSign($data);
             return $data;
         }
     }
