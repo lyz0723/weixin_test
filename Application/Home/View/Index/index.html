@@ -4,23 +4,48 @@
     <meta http-equiv="content-type" content="text/html;charset=utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <title>微信支付样例-支付</title>
-    <script type="text/javascript">
-
+    <script type="text/javascript" src="http://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
+    <script>
         //调用微信JS api 支付
+        function jsApiCall() {
+            // var options = {$options}; //这里获取到PHP生成签名参数包，注意是JSON格式
 
+            var options ={$data}; //这里获取到PHP生成签名参数包，注意是JSON格式
+            wx.config({
+                debug: false,// 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
+                appId: options.appId, // 必填，公众号的唯一标识
+                timestamp: options.timeStamp,// 必填，生成签名的时间戳
+                nonceStr: options.nonceStr,// 必填，生成签名的随机串
+                signature: options.signature,// 必填，签名，见附录1
+                jsApiList: [
+                    // 所有要调用的 API 都要加到这个列表中
+                    'chooseWXPay'
+                ]
+            });
 
+            wx.ready(function () {
 
-        function jsApiCall()
-        {
-            var data={$data};
-            WeixinJSBridge.invoke(
-                    'getBrandWCPayRequest',data,
-            function(res){
-                WeixinJSBridge.log(res.err_msg);
-                alert(res.err_code+res.err_desc+res.err_msg);
-            }
-        );
+                // 支付成功后的操作
+                options.success = function () {
+                    alert('success');
+                };
+
+                //  取消支付的操作
+                options.cancel = function () {
+                    alert('cancel');
+                };
+
+                // 支付失败的处理
+                options.fail = function () {
+                   alert('fail');
+                };
+
+                // 传入参数，发起JSAPI支付
+                wx.chooseWXPay(options);
+            });
+
         }
+
 
 
         function callpay()
