@@ -76,7 +76,7 @@ class Weixinpay {
             die($result['return_msg']);
         }
         $result['sign']=$sign;
-        $result['nonce_str']=$this->createNonceStr();
+        $result['nonce_str']='test';
         return $result;
     }
 
