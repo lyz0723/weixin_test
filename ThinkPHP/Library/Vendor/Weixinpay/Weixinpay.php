@@ -23,6 +23,15 @@ class Weixinpay {
         $this->config=C('WEIXINPAY_CONFIG');
     }
 
+    private function createNonceStr($length = 16) {
+        $chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+        $str = "";
+        for ($i = 0; $i < $length; $i++) {
+            $str .= substr($chars, mt_rand(0, strlen($chars) - 1), 1);
+        }
+        return $str;
+    }
+
     /**
      * 统一下单
      * @param  array $order 订单 必须包含支付所需要的参数 body(产品描述)、total_fee(订单金额)、out_trade_no(订单号)、product_id(产品id)、trade_type(类型：JSAPI，NATIVE，APP)
@@ -33,7 +42,7 @@ class Weixinpay {
         $config=array(
             'appid'=>$weixinpay_config['APPID'],
             'mch_id'=>$weixinpay_config['MCHID'],
-            'nonce_str'=>'test',
+            'nonce_str'=>$nonceStr = $this->createNonceStr(),
             'spbill_create_ip'=>$_SERVER['REMOTE_ADDR'],
             'notify_url'=>$weixinpay_config['NOTIFY_URL']
             );
@@ -67,7 +76,7 @@ class Weixinpay {
             die($result['return_msg']);
         }
         $result['sign']=$sign;
-        $result['nonce_str']='test';
+        $result['nonce_str']=$nonceStr = $this->createNonceStr();;
         return $result;
     }
 
