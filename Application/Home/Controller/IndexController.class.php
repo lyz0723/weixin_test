@@ -16,7 +16,7 @@ class IndexController extends Controller {
         //print_r($signPackage);die;
         $assign=array(
             'data'=>json_encode($data),
-            'singPackage'=>json_encode($signPackage)
+            'singPackage'=>$signPackage
         );
         $this->assign($assign);
         $this->display();
