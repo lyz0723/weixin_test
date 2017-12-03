@@ -209,7 +209,7 @@ class Weixinpay {
                 'signType'=>'MD5'//加密方式
             );
             // 生成签名
-            $data['paySign']=$this->makeSign($data);
+            $data['signature']=$this->makeSign($data);
             return $data;
         }
     }
