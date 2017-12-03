@@ -16,7 +16,7 @@
                 appId: options.appId, // 必填，公众号的唯一标识
                 timestamp: options.timeStamp,// 必填，生成签名的时间戳
                 nonceStr: options.nonceStr,// 必填，生成签名的随机串
-                signature: options.signature,// 必填，签名，见附录1
+                signature: options.paySign,// 必填，签名，见附录1
                 jsApiList: [
                     // 所有要调用的 API 都要加到这个列表中
                     'chooseWXPay'
