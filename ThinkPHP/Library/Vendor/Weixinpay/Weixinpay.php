@@ -146,7 +146,6 @@ class Weixinpay {
         //签名步骤二：在string后加入KEY
         $config=$this->config;
         $string_sign_temp=$string_a."&key=".$config['KEY'];
-        return $string_sign_temp;
         //签名步骤三：MD5加密
         $sign = md5($string_sign_temp);
         // 签名步骤四：所有字符转为大写
