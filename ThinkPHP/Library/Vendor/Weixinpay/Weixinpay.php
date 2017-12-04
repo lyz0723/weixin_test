@@ -148,12 +148,11 @@ class Weixinpay {
         $string_sign_temp=$string_a."&key=".$config['KEY'];
         //签名步骤三：MD5加密
         $sign = md5($string_sign_temp);
-        return $sign;
         // 签名步骤四：所有字符转为大写
         $result=strtoupper($sign);
         return $result;
     }
-    
+
     /**
      * 将xml转为array
      * @param  string $xml xml字符串
