@@ -158,9 +158,9 @@ class Weixinpay {
         }
         $config=$this->config;
         //排序
-        ksort($arr);
+        ksort($data);
         //组装字符
-        $str = $this->arrToUrl($arr) . '&key='.$config['KEY'];
+        $str = $this->arrToUrl($data) . '&key='.$config['KEY'];
         //使用md5 加密 转换成大写
         return strtoupper(md5($str));
     }
