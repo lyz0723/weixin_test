@@ -145,10 +145,9 @@ class Weixinpay {
 
         //签名步骤二：在string后加入KEY
         $config=$this->config;
-        $string_sign_temp=$string_a."&key=".$config['KEY'];
+        $string_sign_temp=$string_a."&key=".'132f0ea0c9e643429827b5deb9dd7449';
         //签名步骤三：MD5加密
         $sign = md5($string_sign_temp);
-        return $sign;
         // 签名步骤四：所有字符转为大写
         $result=strtoupper($sign);
         return $result;
@@ -209,7 +208,6 @@ class Weixinpay {
 
             // 统一下单 获取prepay_id
             $unified_order=$this->unifiedOrder($order);
-            return $unified_order;
 
             // 获取当前时间戳
             $time=time();
