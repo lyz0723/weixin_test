@@ -137,7 +137,7 @@ class Weixinpay {
      */
     public function makeSign($data){
         // 去空
-        /*$data=array_filter($data);
+        $data=array_filter($data);
         //签名步骤一：按字典序排序参数
         ksort($data);
         $string_a=http_build_query($data);
@@ -146,28 +146,12 @@ class Weixinpay {
         //签名步骤二：在string后加入KEY
         $config=$this->config;
         $string_sign_temp=$string_a."&key=".$config['KEY'];
+        return $string_sign_temp;
         //签名步骤三：MD5加密
         $sign = md5($string_sign_temp);
         // 签名步骤四：所有字符转为大写
         $result=strtoupper($sign);
-        return $result;*/
-
-        array_filter($data);
-        if(isset($arr['paySign'])){
-            unset($arr['paySign']);
-        }
-        $config=$this->config;
-        //排序
-        ksort($data);
-        //组装字符
-        $str = $this->arrToUrl($data) . '&key='.$config['KEY'];
-        //使用md5 加密 转换成大写
-        return strtoupper(md5($str));
-    }
-
-    //数组转URL字符串 不带key
-    public function arrToUrl($arr){
-        return urldecode(http_build_query($arr));
+        return $result;
     }
 
     /**
