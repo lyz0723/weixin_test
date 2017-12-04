@@ -153,7 +153,7 @@ class Weixinpay {
         return $result;*/
 
         ksort($data);
-        $string = $this->ToUrlParams();
+        $string = $this->ToUrlParams($data);
         //签名步骤二：在string后加入KEY
         $config=$this->config;
         $string = $string . "&key=".$config['KEY'];
@@ -167,10 +167,10 @@ class Weixinpay {
     /**
      * 格式化参数格式化成url参数
      */
-    public function ToUrlParams()
+    public function ToUrlParams($data)
     {
         $buff = "";
-        foreach ($this->values as $k => $v)
+        foreach ($data as $k => $v)
         {
             if($k != "sign" && $v != "" && !is_array($v)){
                 $buff .= $k . "=" . $v . "&";
