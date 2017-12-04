@@ -6,8 +6,34 @@
     <title>微信支付样例-支付</title>
     <script src="https://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
     <script type="text/javascript">
+        function onBridgeReady(){
+            var data={$data};
+            WeixinJSBridge.invoke(
+                    'getBrandWCPayRequest', data,
+                    function(res){
+                        if(res.err_msg == "get_brand_wcpay_request:ok" ) {
+                            // 使用以上方式判断前端返回,微信团队郑重提示：res.err_msg将在用户支付成功后返回    ok，但并不保证它绝对可靠。
+                        }else{
+                            alert(res.err_code+res.err_desc+res.err_msg); // 显示错误信息
+                        }
+                    }
+            );
+        }
+        function callpay(){
+            if (typeof WeixinJSBridge == "undefined"){
+                if( document.addEventListener ){
+                    document.addEventListener('WeixinJSBridgeReady', onBridgeReady, false);
+                }else if (document.attachEvent){
+                    document.attachEvent('WeixinJSBridgeReady', onBridgeReady);
+                    document.attachEvent('onWeixinJSBridgeReady', onBridgeReady);
+                }
+            }else{
+                onBridgeReady();
+            }
+        }
+
         //调用微信JS api 支付
-        function jsApiCall() {
+        /*function jsApiCall() {
 
             // var options = {$options}; //这里获取到PHP生成签名参数包，注意是JSON格式
             var options={$data};
@@ -46,10 +72,10 @@
                 // 传入参数，发起JSAPI支付
                 wx.chooseWXPay(options);
             });
-        }
+        }*/
 
 
-        function callpay()
+        /*function callpay()
         {
             if (typeof WeixinJSBridge == "undefined"){
                 if( document.addEventListener ){
@@ -62,7 +88,7 @@
             }else{
                 jsApiCall();
             }
-        }
+        }*/
     </script>
     <!--<script type="text/javascript">
         //获取共享地址
