@@ -214,23 +214,15 @@ class Weixinpay {
             // 组合jssdk需要用到的数据
             $data=array(
                 'appId'=>$config['APPID'], //appid
-                'timestamp'=>strval($time), //时间戳
+                'timeStamp'=>strval($time), //时间戳
                 'nonceStr'=>$unified_order['nonce_str'],// 随机字符串
                 'package'=>'prepay_id='.$unified_order['prepay_id'],// 预支付交易会话标识
                 'signType'=>'MD5'//加密方式
             );
             // 生成签名
-            $data['paySign']=$this->getPaySign($data,'132f0ea0c9e643429827b5deb9dd7449');
+            $data['paySign']=$this->makeSign($data);
             return $data;
         }
-    }
-    static public function getPaySign($option, $partnerKey) {
-        ksort($option);
-        $buff = '';
-        foreach ($option as $k => $v) {
-            $buff .= "{$k}={$v}&";
-        }
-        return strtoupper(md5("{$buff}key={$partnerKey}"));
     }
 
     /**
