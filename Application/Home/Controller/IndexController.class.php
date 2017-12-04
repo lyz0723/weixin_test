@@ -13,7 +13,7 @@ class IndexController extends Controller {
         $jssdk = new \JSSDK("wx4ff19b6511cb0168", "ef0cc74d77ceb137e297efecfc0e9908");
         $signPackage = $jssdk->GetSignPackage();
         $data['nonceStr']=$signPackage['nonceStr'];
-        //print_r($signPackage);die;
+        print_r($signPackage);die;
         $assign=array(
             'data'=>json_encode($data)
         );
