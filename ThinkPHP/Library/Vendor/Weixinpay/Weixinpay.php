@@ -153,14 +153,7 @@ class Weixinpay {
         return $result;
     }
 
-    static public function getPaySign($option, $partnerKey) {
-        ksort($option);
-        $buff = '';
-        foreach ($option as $k => $v) {
-            $buff .= "{$k}={$v}&";
-        }
-        return strtoupper(md5("{$buff}key={$partnerKey}"));
-    }
+
 
 
     /**
@@ -226,9 +219,8 @@ class Weixinpay {
                 'package'=>'prepay_id='.$unified_order['prepay_id'],// 预支付交易会话标识
                 'signType'=>'MD5'//加密方式
             );
-            $config=$this->config;
             // 生成签名
-            $data['paySign']=$this->getPaySign($data,$config['KEY']);
+            $data['paySign']=$this->makeSign($data);
             return $data;
         }
     }
