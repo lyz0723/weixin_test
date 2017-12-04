@@ -213,8 +213,8 @@ class Weixinpay {
             $time=time();
             // 组合jssdk需要用到的数据
             $data=array(
-                //'appId'=>$config['APPID'], //appid
-                'timestamp'=>strval($time), //时间戳
+                'appId'=>$config['APPID'], //appid
+                'timeStamp'=>strval($time), //时间戳
                 'nonceStr'=>$unified_order['nonce_str'],// 随机字符串
                 'package'=>'prepay_id='.$unified_order['prepay_id'],// 预支付交易会话标识
                 'signType'=>'MD5'//加密方式
