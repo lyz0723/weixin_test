@@ -6,7 +6,7 @@
     <title>微信支付样例-支付</title>
     <script src="https://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
     <script type="text/javascript">
-        function onBridgeReady(){
+        /*function onBridgeReady(){
             var data={$data};
             WeixinJSBridge.invoke(
                     'getBrandWCPayRequest', data,
@@ -33,13 +33,13 @@
             }else{
                 onBridgeReady();
             }
-        }
+        }*/
 
         //调用微信JS api 支付
-        /*function jsApiCall() {
+        function jsApiCall() {
 
             // var options = {$options}; //这里获取到PHP生成签名参数包，注意是JSON格式
-            var options={$data};
+            var options={$signPackage};
             wx.config({
                 debug: true,// 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
                 appId: '{$signPackage["appId"]}', // 必填，公众号的唯一标识?code=071vhzae2tCYoE06jDee2lZLae2vhza0&state=1
@@ -48,34 +48,42 @@
                 signature: '{$signPackage["signature"]}',// 必填，签名，见附录1
                 jsApiList: [
                     // 所有要调用的 API 都要加到这个列表中
-                    'chooseWXPay'
+                    'onMenuShareTimeline',
+
+                    'onMenuShareAppMessage',
+
+                    'onMenuShareQQ',
+
+                    'onMenuShareWeibo',
+
+                    'onMenuShareQZone'
                 ]
             });
             wx.ready(function () {
+                wx.onMenuShareTimeline({
 
-                //这里获取到PHP生成签名参数包，注意是JSON格式
-                // var  options = {$options};
+                    title: '分享标题', // 分享标题
 
-                // 支付成功后的操作
-                options.success = function () {
+                    link: 'https://liyanzhao.feisir.com/wordpress', // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
 
+                    imgUrl: 'https://liyanzhao.feisir.com/logo.png', // 分享图标
 
-                };
+                    success: function () {
 
-                //  取消支付的操作
-                options.cancel = function () {
+                        // 用户确认分享后执行的回调函数
+                        alert(222)
 
-                };
+                    },
 
-                // 支付失败的处理
-                options.fail = function () {
+                    cancel: function () {
 
-                };
+                        // 用户取消分享后执行的回调函数
+                        alert(11)
+                    }
 
-                // 传入参数，发起JSAPI支付
-                wx.chooseWXPay(options);
+                });
             });
-        }*/
+        }
 
 
         /*function callpay()
