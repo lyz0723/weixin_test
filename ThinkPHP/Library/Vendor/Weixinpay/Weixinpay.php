@@ -213,11 +213,11 @@ class Weixinpay {
             $time=time();
             // 组合jssdk需要用到的数据
             $data=array(
-                'appId'=>$config['APPID'], //appid
-                'timeStamp'=>strval($time), //时间戳
+                'appId'=>'wx4ff19b6511cb0168', //appid
                 'nonceStr'=>$unified_order['nonce_str'],// 随机字符串
                 'package'=>'prepay_id='.$unified_order['prepay_id'],// 预支付交易会话标识
-                'signType'=>'MD5'//加密方式
+                'signType'=>'MD5',//加密方式
+                'timeStamp'=>strval($time) //时间戳
             );
             // 生成签名
             $data['paySign']=$this->makeSign($data);
