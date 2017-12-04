@@ -1,6 +1,6 @@
 <?php
 require_once "jssdk.php";
-$jssdk = new JSSDK("yourAppID", "yourAppSecret");
+$jssdk = new JSSDK("wx4ff19b6511cb0168", "wx4ff19b6511cb0168");
 $signPackage = $jssdk->GetSignPackage();
 ?>
 <!DOCTYPE html>
@@ -10,9 +10,9 @@ $signPackage = $jssdk->GetSignPackage();
   <title></title>
 </head>
 <body>
-  
+  <div>分享1</div>
 </body>
-<script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+<script src="https://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
 <script>
   /*
    * 注意：
@@ -33,10 +33,45 @@ $signPackage = $jssdk->GetSignPackage();
     signature: '<?php echo $signPackage["signature"];?>',
     jsApiList: [
       // 所有要调用的 API 都要加到这个列表中
+        'onMenuShareTimeline',
+
+        'onMenuShareAppMessage',
+
+        'onMenuShareQQ',
+
+        'onMenuShareWeibo',
+
+        'onMenuShareQZone'
     ]
   });
   wx.ready(function () {
-    // 在这里调用 API
+      wx.onMenuShareAppMessage({
+
+          title: '分享标题', // 分享标题
+
+          desc: '分享描述', // 分享描述
+
+          link: 'https://liyanzhao.feisir.com/share/share.php', // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
+
+          imgUrl: 'https://liyanzhao.feisir.com/logo.png', // 分享图标
+
+          type: '', // 分享类型,music、video或link，不填默认为link
+
+          dataUrl: '', // 如果type是music或video，则要提供数据链接，默认为空
+
+          success: function () {
+                alert(333)
+              // 用户确认分享后执行的回调函数
+
+          },
+
+          cancel: function () {
+                alert(222)
+              // 用户取消分享后执行的回调函数
+
+          }
+
+      });
   });
 </script>
 </html>
