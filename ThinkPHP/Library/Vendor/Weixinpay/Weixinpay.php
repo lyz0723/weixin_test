@@ -87,7 +87,7 @@ class Weixinpay {
      */
     public function notify(){
         // 获取xml
-        $xml=ile_get_contents('php://input', 'r');
+        $xml=file_get_contents('php://input', 'r');
         // 转成php数组
         $data=$this->toArray($xml);
         // 保存原sign
