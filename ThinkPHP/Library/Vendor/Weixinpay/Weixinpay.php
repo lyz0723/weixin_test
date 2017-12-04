@@ -145,7 +145,6 @@ class Weixinpay {
 
         //签名步骤二：在string后加入KEY
         $config=$this->config;
-        $string_a='appid=wx4ff19b6511cb0168&nonceStr=W6a72N9yNdOyG85l&package=prepay_id=wx2017120411483414020a90f80758725412&signType=MD5&timestamp=1512359314';
         $string_sign_temp=$string_a."&key=".$config['KEY'];
         //签名步骤三：MD5加密
         $sign = md5($string_sign_temp);
@@ -154,7 +153,7 @@ class Weixinpay {
         $result=strtoupper($sign);
         return $result;
     }
-
+    
     /**
      * 将xml转为array
      * @param  string $xml xml字符串
