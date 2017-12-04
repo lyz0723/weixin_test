@@ -42,7 +42,7 @@ class Weixinpay {
         $config=array(
             'appid'=>$weixinpay_config['APPID'],
             'mch_id'=>$weixinpay_config['MCHID'],
-            'nonce_str'=>'test',
+            'nonce_str'=>$this->createNonceStr(),
             'spbill_create_ip'=>$_SERVER['REMOTE_ADDR'],
             'notify_url'=>$weixinpay_config['NOTIFY_URL']
             );
@@ -76,7 +76,7 @@ class Weixinpay {
             die($result['return_msg']);
         }
         $result['sign']=$sign;
-        $result['nonce_str']='test';
+        $result['nonce_str']=$this->createNonceStr();
         return $result;
     }
 
